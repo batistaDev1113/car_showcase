@@ -30,7 +30,7 @@ const CardDetails = ({ isOpen, closeModal, car }: CardDetailsProps) => {
             <div className="fixed inset-0 bg-black bg-opacity-25"></div>
           </Transition.Child>
           <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center p-4 text-center">
+            <div className="flex min-h-full items-center p-4 text-center justify-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -40,7 +40,7 @@ const CardDetails = ({ isOpen, closeModal, car }: CardDetailsProps) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl bg-white p-6 text-left shadow-md transition-all flex flex-col gap-5">
+                <Dialog.Panel className="relative w-full max-w-lg max-h-[95vh] overflow-y-auto transform rounded-2xl bg-white p-6 text-left shadow-md transition-all flex flex-col gap-5">
                   <button
                     type="button"
                     onClick={closeModal}

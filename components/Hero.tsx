@@ -2,10 +2,17 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/image";
 import CustomButton from "./CustomButton";
 
 const Hero = () => {
-  const handleScroll = () => {};
+  const handleScroll = () => {
+    const element = document.getElementById("discovery");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="hero">
       <div className="flex-1 pt-36 padding-x">

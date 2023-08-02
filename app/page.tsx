@@ -1,12 +1,15 @@
 import Image from "next/image";
 import { fetchCars } from "@/utils";
+import { CarProps } from "@/types";
 
 import { Hero, SearchBar, CustomFilter, CarCard } from "@/components";
 
 export default async function Home() {
   const allCars = await fetchCars();
 
-  const isDataEmpty = (await !Array.isArray(allCars)) || !allCars.length;
+  const isDataEmpty = !Array.isArray(allCars) || !allCars.length;
+  const carYears = allCars?.map((car: CarProps) => car.year);
+  const carFuel = allCars?.map((car: CarProps) => car.city_mpg);
 
   return (
     <main className="overflow-hidden">
@@ -19,15 +22,15 @@ export default async function Home() {
         <div className="home__filters">
           <SearchBar />
           <div className="home__filter-container">
-            <CustomFilter title="fuel" />
-            <CustomFilter title="year" />
+            <CustomFilter title="fuel" carYears={carYears} />
+            <CustomFilter title="year" carFuel={carFuel} />
           </div>
         </div>
 
         {!isDataEmpty ? (
           <section>
             <div className="home__cars-wrapper">
-              {allCars?.map((car, index) => (
+              {allCars?.map((car: CarProps, index: number) => (
                 <CarCard car={car} key={index} />
               ))}
             </div>
